@@ -1,0 +1,30 @@
+{
+  "name": "uber-clone",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "precommit": "lint-staged",
+    "postinstall": "node -e \"if(require('fs').existsSync('.git')){process.exit(1)}\" || is-ci || husky install",
+    "pre-commit": "next lint"
+  },
+  "lint-staged": {
+       "*.js": ["eslint --fix", "git add"]
+  },
+  "dependencies": {
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "12.1.6",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1"
+  }
+}
