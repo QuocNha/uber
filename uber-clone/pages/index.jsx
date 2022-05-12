@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/image'l
+import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 const a =1;
