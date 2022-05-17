@@ -1,6 +1,4 @@
-.container {
-  padding: 0 2rem;
-}
+
 
 .main {
   min-height: 100vh;
@@ -113,4 +111,19 @@
     width: 100%;
     flex-direction: column;
   }
+}
+.container {
+  padding: 0 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+}
+.map{
+ background-color: blue;
+ flex:1;
+}
+.start{
+background-color: red;
+flex:1;
 }

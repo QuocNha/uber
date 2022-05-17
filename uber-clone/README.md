@@ -32,3 +32,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Library:
+
+- Eslint
+
+* Yarn lint
+* Npx eslint --init
+* Link: https://www.youtube.com/watch?v=AsM0oxyJ6I8
+
+- Lint-staged:
+
+* "lint-staged": {
+  "\*.js": ["eslint --fix", "git add"]
+  },
+  "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "precommit": "lint-staged",
+  "postinstall": "node -e \"if(require('fs').existsSync('.git')){process.exit(1)}\" || is-ci || husky install",
+  "pre-commit": "yarn lint"
+  },
+
+- Husky:
+Link: https://spacejelly.dev/posts/how-to-automate-code-linting-in-next-js-with-eslint-husky-git-hooks/
+-.prettierrc.js:
+ Set default values for file format 
