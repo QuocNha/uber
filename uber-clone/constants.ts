@@ -1,4 +1,5 @@
 export const URL ={
     HOME:'/',
-    SEARCH:'/search'
+    SEARCH:'/search',
+    CONFIRM:'/confirm'
 };

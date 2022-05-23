@@ -24,6 +24,12 @@ function Map(props) {
     if (propOffCoordinates) {
       addToMap(map, propOffCoordinates);
     }
+    if (pickUpCoordinates && propOffCoordinates) {
+      map.fitBounds([
+        ...pickUpCoordinates, // southwestern corner of the bounds
+        ...propOffCoordinates, // northeastern corner of the bounds
+      ], { padding: 60 });
+    }
 
     // Create a default Marker and add it to the map.
   }, [pickUpCoordinates, propOffCoordinates]);

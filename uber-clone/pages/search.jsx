@@ -1,5 +1,6 @@
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
+import { useState } from 'react';
 import { URL } from '../constants.ts';
 
 function search() {
@@ -9,7 +10,9 @@ function search() {
   const plusIcon = 'https://img.icons8.com/ios-filled/50/000000/plus-math.png';
   const starIcon = 'https://img.icons8.com/ios-filled/50/ffffff/star--v1.png';
   const goToHome = URL.HOME;
-
+  const goToConfirm = URL.CONFIRM;
+  const [pickUp, setPickUp] = useState('');
+  const [dropOff, setDropOff] = useState('');
   return (
     <Wrapper>
       <ButtonContainer>
@@ -24,8 +27,16 @@ function search() {
           <Circle src={circle} />
         </FormToIcon>
         <InputBox>
-          <Input placeholder="Enter pickup location" />
-          <Input placeholder="Where to?" />
+          <Input
+            placeholder="Enter pickup location"
+            value={pickUp}
+            onChange={(e) => { setPickUp(e.target.value); }}
+          />
+          <Input
+            placeholder="Where to?"
+            value={dropOff}
+            onChange={(e) => { setDropOff(e.target.value); }}
+          />
         </InputBox>
         <PlusIcon src={plusIcon} />
       </InputContainer>
@@ -33,7 +44,16 @@ function search() {
         <StarIcon src={starIcon} />
         Saved Places
       </SavedPlaces>
-      <ConfirmButtonContainer>Confirm Locations</ConfirmButtonContainer>
+      <Link href={{
+        pathname: goToConfirm,
+        query: {
+          pickup: pickUp,
+          dropoff: dropOff,
+        },
+      }}
+      >
+        <ConfirmButtonContainer>Confirm Locations</ConfirmButtonContainer>
+      </Link>
     </Wrapper>
   );
 }
