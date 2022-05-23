@@ -2,10 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import tw from 'tailwind-styled-components';
 import Map from './components/Map';
+import { URL } from '../constants.ts';
 
 export default function Home() {
   const img = 'https://i.ibb.co/5RjchBg/ubershedule.png';
-  const goToSearch = '/search';
+  const goToSearch = URL.SEARCH;
   return (
     <Wrapper>
       <Map />

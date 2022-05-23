@@ -1,4 +1,6 @@
 import tw from 'tailwind-styled-components';
+import Link from 'next/link';
+import { URL } from '../constants.ts';
 
 function search() {
   const img = 'https://img.icons8.com/ios-filled/50/000000/left.png';
@@ -6,10 +8,14 @@ function search() {
   const line = 'https://img.icons8.com/ios/50/9CA3AF/vertical-line.png';
   const plusIcon = 'https://img.icons8.com/ios-filled/50/000000/plus-math.png';
   const starIcon = 'https://img.icons8.com/ios-filled/50/ffffff/star--v1.png';
+  const goToHome = URL.HOME;
+
   return (
     <Wrapper>
       <ButtonContainer>
-        <BackButton src={img} />
+        <Link href={goToHome}>
+          <BackButton src={img} />
+        </Link>
       </ButtonContainer>
       <InputContainer>
         <FormToIcon>
@@ -27,8 +33,7 @@ function search() {
         <StarIcon src={starIcon} />
         Saved Places
       </SavedPlaces>
-      {/* Saved Places */}
-      {/* Confirm Location */}
+      <ConfirmButtonContainer>Confirm Locations</ConfirmButtonContainer>
     </Wrapper>
   );
 }
@@ -38,7 +43,7 @@ h-screen bg-gray-200
 const ButtonContainer = tw.div`
 bg-white px-4`;
 const BackButton = tw.img`
-h-12`;
+h-12 cursor-pointer`;
 const InputContainer = tw.div`
 bg-white flex items-center px-4 mb-2
 `;
@@ -60,4 +65,6 @@ flex items-center bg-white px-4 py-2`;
 const StarIcon = tw.img`
 bg-gray-400 w-10 h-10 p-2 rounded-full mr-2
 `;
+const ConfirmButtonContainer = tw.div`
+bg-black text-white flex items-center justify-center mt-2 mx-4 px-4 py-3`;
 export default search;

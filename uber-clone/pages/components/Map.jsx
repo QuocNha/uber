@@ -3,8 +3,14 @@ import tw from 'tailwind-styled-components';
 // eslint-disable-next-line
 import mapBoxGL from '!mapbox-gl';
 
-function Map() {
+function Map(props) {
+  const { pickUpCoordinates, propOffCoordinates } = props;
   mapBoxGL.accessToken = 'pk.eyJ1IjoibmhhZGFuZyIsImEiOiJjbDM0YWNkdTUwOHltM2NrNzdmbGxxYWdwIn0.b5P79zROMS--ysXXWhzrhA';
+  const addToMap = (map, coordinates) => {
+    const marker1 = new mapBoxGL.Marker()
+      .setLngLat(coordinates)
+      .addTo(map);
+  };
   useEffect(() => {
     const map = new mapBoxGL.Map({
       container: 'map',
@@ -12,7 +18,16 @@ function Map() {
       center: [-99.29011, 39.39172],
       zoom: 3,
     });
-  });
+    if (pickUpCoordinates) {
+      addToMap(map, pickUpCoordinates);
+    }
+    if (propOffCoordinates) {
+      addToMap(map, propOffCoordinates);
+    }
+
+    // Create a default Marker and add it to the map.
+  }, [pickUpCoordinates, propOffCoordinates]);
+
   return (
     <Wrapper id="map"> </Wrapper>
   );
