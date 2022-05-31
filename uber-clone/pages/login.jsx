@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import { useRouter } from 'next/router';
-import firebase, { signInWithPopup } from 'firebase/auth';
-
+import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { auth, provider } from '../firebase.ts';
 import { URL } from '../constants.ts';
 
@@ -16,14 +15,15 @@ function login() {
     signInWithPopup(auth, provider);
   };
   useEffect(() => {
-    firebase?.onAuthStateChanged((user) => {
+    const valueAuth = auth;
+    onAuthStateChanged(valueAuth, (user) => {
       if (user) {
         router.push(homeLink);
       } else {
         // No user is signed in.
       }
     });
-  });
+  }, []);
   return (
     <Wrapper>
       <UberLogo src={uberLogo} />
